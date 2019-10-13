@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Trivia</title>
+  <link rel="stylesheet" href="../public/css/main.css">
+</head>
+<body>
+  <div class="menu">
+  <h1>Welcome to Trivia</h1>
+  <h2>Steps:</h2>
+  <ul>
+    <li>Enter your name and click on start</li>
+    <li>To join a room enter room id along with your name and click on start</li>
+  </ul><br>
+    <h3>Create New Game</h3>
+    Name: <input type="text" id="nameNew" name="name" required placeholder="Enter your name"> <button class="button" id="newb">Start Game</button><br><br><br>
+    <h3>Join Existing Game</h3>
+    Name: <input type="text" id="nameJoin" name="name" required placeholder="Enter your name"> Room ID: <input required placeholder="Enter RoomID" name="room" type="text" id="roomID" required> <button class="button" id="joinb">Join Game</button>
+</div><br>
+<div class="game">
+  <center><h2 id="welcome"></h2></center>
+  <span id="s1">Score:<input type="number" id="score"><input type="time" id="timer"> Time Left</span><br><br>
+  Question: <span><p id="ques"></p></span><br><br>
+  <input type="radio" name="option" value="optionA"><span><p id="A"></p></span><br>
+  <input type="radio" name="option" value="optionB"><span><p id="B"></p></span><br>
+  <input type="radio" name="option" value="optionC"><span><p id="C"></p></span><br>
+  <input type="radio" name="option" value="optionD"><span><p id="D"></p></span><br>
+</div>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script type="text/javascript" src="../public/js/main.js"></script>
+</body>
+</html>
