@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const models = require('./models');
 
 app.use(express.static('.'));
 
@@ -31,4 +32,12 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(process.env.PORT || 3000);
+models.sequelize
+.sync()
+.then(result => {
+    //console.log(result);
+    server.listen(process.env.PORT || 3000);
+})
+.catch(err => {
+    console.log(err);
+});

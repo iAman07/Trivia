@@ -1,20 +1,12 @@
-
 $(document).ready(function() {
     var socket = io.connect('http://localhost:3000');
-    let player1;
-    let player2;
-
+    let player;
     class Player {
-        constructor(name,type) {
+        constructor(name) {
             this.name = name;
-            this.type = type;
         }
         getPlayerName() {
             return this.name;
-        }
-      
-        getPlayerType() {
-            return this.type;
         }
     }
     $('#newb').on('click', () => {
@@ -24,7 +16,7 @@ $(document).ready(function() {
             return;
         }
         socket.emit('createGame',{name: name});
-        player1 = new Player(name,P1);
+        player = new Player(name);
     });
     
     socket.on('newGame',(data) => {
@@ -43,11 +35,11 @@ $(document).ready(function() {
             return;
         }
         socket.emit('joinGame',{ name : name, room : id });
-        player2 = new Player(name,P2);
+        player = new Player(name);
     });
 
     socket.on('player1', (data) => {
-        const message = `Hello, ${player1.getPlayerName()}`;
+        const message = `Hello, ${player.getPlayerName()}`;
         $('#welcome').html(message);
     });
 
